@@ -34,6 +34,7 @@ extern "C" {
 
 void twi_init(unsigned char sda, unsigned char scl);
 void twi_stop(void);
+unsigned int twi_getClock();
 void twi_setClock(unsigned int freq);
 void twi_setClockStretchLimit(uint32_t limit);
 uint8_t twi_writeTo(unsigned char address, unsigned char * buf, unsigned int len, unsigned char sendStop);

@@ -86,6 +86,10 @@ void TwoWire::begin(int address){
   begin((uint8_t)address);
 }
 
+uint32_t TwoWire::getClock(){
+  return  twi_getClock();
+}
+
 void TwoWire::setClock(uint32_t frequency){
   twi_setClock(frequency);
 }

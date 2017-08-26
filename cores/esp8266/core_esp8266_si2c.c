@@ -43,6 +43,25 @@ static uint32_t twi_clockStretchLimit;
 #define TWI_CLOCK_STRETCH_MULTIPLIER 6
 #endif
 
+unsigned int twi_getClock(){
+#if F_CPU == FCPU80
+  if(twi_dcount == 19) return 100000;
+  if(twi_dcount == 8) return 200000;
+  if(twi_dcount == 3) return 300000;
+  if(twi_dcount == 1) return 400000;
+  return 0;
+#else
+  if(twi_dcount == 32) return 100000;
+  if(twi_dcount == 14) return 200000;
+  if(twi_dcount == 8) return 300000;
+  if(twi_dcount == 5) return 400000;
+  if(twi_dcount == 3) return 500000;
+  if(twi_dcount == 2) return 600000;
+  if(twi_dcount == 1) return 700000;
+  return 0;
+#endif
+}
+
 void twi_setClock(unsigned int freq){
 #if F_CPU == FCPU80
   if(freq <= 100000) twi_dcount = 19;//about 100KHz
